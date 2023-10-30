@@ -1,6 +1,72 @@
 <app-navigation></app-navigation>
 
-<div style="display: flex">
+<div class="header">
+  <h1 class="header-title">
+    Explore Your Favorite Stories from a Galaxy
+    <br />
+    Far, Far Away...
+  </h1>
+</div>
+
+<div class="movie-grid">
+  <div class="movie-grid-items" *ngFor="let movie of movies; let i = index">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title class="movie-title">{{ movie.title }}</mat-card-title>
+        <mat-card-subtitle class="movie-subtitle"
+          >Directed by: {{ movie.director.name }}</mat-card-subtitle
+        >
+      </mat-card-header>
+      <br />
+      <img src="{{ movie.imageURL }}" alt="{{ movie.title }}" />
+      <mat-card-actions class="actions">
+        <button
+          mat-button
+          (click)="getGenre(movie.genre.name, movie.genre.description)"
+          color="primary"
+        >
+          Genre
+        </button>
+        <button
+          mat-button
+          (click)="getDirector(movie.director.name, movie.director.bio)"
+          color="primary"
+        >
+          Director
+        </button>
+        <button
+          mat-button
+          (click)="getMovieDetails(movie.title, movie.description)"
+          color="primary"
+        >
+          Synopsis
+        </button>
+        <button>
+          <mat-icon class="fav-icon">favorite_border</mat-icon>
+        </button>
+        <!--
+      <button
+        *ngIf="!isFavorite(movie._id)"
+        mat-icon-button
+        (click)="addFavoriteMovie(movie._id)"
+        matTooltip="Add to Favorites List"
+      >
+        <mat-icon class="fav-icon">favorite_border</mat-icon>
+      </button>
+      <button
+        *ngIf="isFavorite(movie._id)"
+        mat-icon-button
+        (click)="deleteFavoriteMovie(movie._id)"
+        matTooltip="Remove from Favorites List"
+      >
+        <mat-icon class="fav-icon">favorite_border</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  </div>
+</div>
+
+<!--<div style="display: flex">
   <mat-card *ngFor="let movie of movies" style="flex: 1 1 auto">
     <mat-card-header>
       <mat-card-title class="movie-title">{{ movie.title }}</mat-card-title>
@@ -51,7 +117,11 @@
       >
         <mat-icon class="fav-icon">favorite_border</mat-icon>
       </button>
-      -->
     </mat-card-actions>
   </mat-card>
+</div>
+-->
+      </mat-card-actions></mat-card
+    >
+  </div>
 </div>

@@ -1,7 +1,123 @@
+.header-title {
+  text-align: center;
+  margin-top: 40px;
+  color: #ffe81f;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(350px, 1fr));
+  grid-gap: 1rem;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.movie-grid-items {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
 .fav-icon {
   color: red;
+  background-color: rgb(34, 34, 34);
 }
 
 .movie-title {
-  color: black;
+  color: white;
+  font-size: 1.2rem;
+  font-size: 700;
+  text-align: center;
+}
+
+.movie-subtitle {
+  color: #ffe81f;
+  text-align: center;
+  margin-top: 10px;
+}
+
+mat-card {
+  align-items: center;
+  min-width: 320px;
+  background-color: rgb(34, 34, 34);
+  border: 1px solid #ffe81f;
+}
+
+img {
+  max-height: 350px;
+  max-width: 350px;
+  object-fit: cover;
+  /*border: 1px solid #ffe81f;*/
+}
+
+.actions button {
+  color: white;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.actions button:hover {
+  color: #ffe81f;
+}
+
+.actions button:last-child {
+  background-color: rgb(34, 34, 34);
+  border: none;
+}
+
+@media (max-width: 1750px) {
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-gap: 1rem;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .movie-grid-items {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 1066px) {
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+    grid-gap: 1rem;
+    margin: 0 auto;
+  }
+
+  .movie-grid-items {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
+    grid-gap: 1rem;
+    margin: 0 auto;
+  }
+
+  .movie-grid-items {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+  }
+
+  mat-card {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 }
