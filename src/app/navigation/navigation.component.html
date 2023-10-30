@@ -1,1 +1,22 @@
-<p>navigation works!</p>
+<mat-toolbar class="navbar">
+  <a mat-button (click)="toMovies()" target="_blank">myFlix - Star Wars</a>
+
+  <span class="format"></span>
+
+  <button
+    mat-icon-button
+    class="nav-icon"
+    aria-label="profile button"
+    (click)="toProfile()"
+  >
+    <mat-icon>person</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="nav-icon"
+    aria-label="Logout button"
+    (click)="toLogout()"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
