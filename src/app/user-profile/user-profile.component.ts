@@ -34,7 +34,7 @@ export class UserProfileComponent {
       this.userData.email = this.user.email;
       this.userData.birthday = formatDate(
         this.user.birthday,
-        'yyyy-MM-dd',
+        'YYYY-MM-DD',
         'en-US',
         'UTC+0'
       );

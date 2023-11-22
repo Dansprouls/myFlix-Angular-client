@@ -5,67 +5,108 @@
   <div class="user-container">
     <div class="user-info">
       <h1>Profile Info:</h1>
-      <p>Username: {{ userData.username }}</p>
-      <p>Email: {{ userData.email }}</p>
-      <p>Birthday: {{ userData.birthday }}</p>
+      <p>Username: {{ user.username }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>Birthday: {{ user.birthday }}</p>
     </div>
   </div>
 
-  <!-- UNDO WHEN TESTING FORM -->
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title> Update User Info: </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form>
-        <mat-form-field class="edit-username">
-          <mat-label>Username: </mat-label>
-          <input
-            matInput
-            [(ngModel)]="userData.username"
-            type="text"
-            name="Username"
-            placeholder="New Username"
-          />
-        </mat-form-field>
-        <mat-form-field class="edit-password">
-          <mat-label>Password: </mat-label>
-          <input
-            matInput
-            [(ngModel)]="userData.password"
-            type="text"
-            name="Password"
-            placeholder="New Password"
-          />
-        </mat-form-field>
-        <mat-form-field class="edit-email">
-          <mat-label>Email: </mat-label>
-          <input
-            matInput
-            [(ngModel)]="userData.email"
-            type="email"
-            name="Email"
-            placeholder="New Email"
-          />
-        </mat-form-field>
-        <mat-form-field class="edit-birthday">
-          <mat-label>Birthday: </mat-label>
-          <input
-            mat-input
-            [(ngModel)]="userData.birthday"
-            type="date"
-            name="Birthday"
-          />
-        </mat-form-field>
+  <!-- <div>
+    <form>
+      <mat-form-field class="edit-username">
+        <mat-label>Username: </mat-label>
+        <input
+          matInput
+          [(ngModel)]="userData.username"
+          type="text"
+          name="Username"
+          placeholder="New Username"
+        />
+      </mat-form-field>
+      <mat-form-field class="edit-password">
+        <mat-label>Password: </mat-label>
+        <input
+          matInput
+          [(ngModel)]="userData.password"
+          type="text"
+          name="Password"
+          placeholder="New Password"
+        />
+      </mat-form-field>
+      <mat-form-field class="edit-email">
+        <mat-label>Email: </mat-label>
+        <input
+          matInput
+          [(ngModel)]="userData.email"
+          type="email"
+          name="Email"
+          placeholder="New Email"
+        />
+      </mat-form-field>
+      <mat-form-field class="edit-birthday">
+        <mat-label>Birthday: </mat-label>
+        <input
+          matInput
+          [(ngModel)]="userData.birthday"
+          type="date"
+          name="Birthday"
+        />
+      </mat-form-field>
+    </form>
+  </div> -->
 
-        <button mat-raised-button color="primary" (click)="editUser()">
-          Update Info
-        </button>
+  <div>
+    <h2>Update User Info:</h2>
 
-        <button mat-raised-button color="warn" (click)="deleteUser()">
-          Delete User
-        </button>
-      </form>
-    </mat-card-content>
-  </mat-card>
+    <form>
+      <mat-form-field class="edit-username">
+        <mat-label>Username: </mat-label>
+        <input
+          matInput
+          [(ngModel)]="userData.username"
+          type="text"
+          name="Username"
+          placeholder="New Username"
+        />
+      </mat-form-field>
+      <mat-form-field class="edit-password">
+        <mat-label>Password: </mat-label>
+        <input
+          matInput
+          [(ngModel)]="userData.password"
+          type="text"
+          name="Password"
+          placeholder="New Password"
+        />
+      </mat-form-field>
+      <mat-form-field class="edit-email">
+        <mat-label>Email: </mat-label>
+        <input
+          matInput
+          [(ngModel)]="userData.email"
+          type="email"
+          name="Email"
+          placeholder="New Email"
+        />
+      </mat-form-field>
+      <mat-form-field class="edit-birthday">
+        <mat-label>Birthday: </mat-label>
+        <input
+          matInput
+          [(ngModel)]="userData.birthday"
+          type="date"
+          name="Birthday"
+          placeholder="YYYY-MM-DD"
+        />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="editUser()">
+        Update Info
+      </button>
+
+      <button mat-raised-button color="warn" (click)="deleteUser()">
+        Delete User
+      </button>
+    </form>
+  </div>
 </div>

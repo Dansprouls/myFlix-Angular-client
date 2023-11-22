@@ -127,10 +127,10 @@ export class UserRegistrationService {
   }
 
   //added to create boolean for button to add/remove movies
-  /*isFavorite(_id: string): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.FavoriteMovies.indexOf(_id) >= 0;
-  }*/
+  isFavorite(movieId: string): boolean {
+    const username = JSON.parse(localStorage.getItem('username') || '{}');
+    return username.FavoriteMovies.indexOf(movieId) >= 0;
+  }
 
   deleteUser(): Observable<any> {
     const userid = localStorage.getItem('userid');

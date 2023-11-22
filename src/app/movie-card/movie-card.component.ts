@@ -64,9 +64,9 @@ export class MovieCardComponent {
     });
   }
 
-  /*isFavorite(_id: string): boolean {
+  isFavorite(_id: string): boolean {
     return this.fetchApiData.isFavorite(_id);
-  }*/
+  }
 
   deleteFavoriteMovie(_id: string): void {
     this.fetchApiData.deleteFavoriteMovie(_id).subscribe((Resp: any) => {
