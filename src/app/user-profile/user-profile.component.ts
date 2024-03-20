@@ -34,10 +34,12 @@ export class UserProfileComponent {
       this.userData.email = this.user.email;
       this.userData.birthday = formatDate(
         this.user.birthday,
-        'YYYY-MM-DD',
-        'en-US',
-        'UTC+0'
+        'yyyy-MM-dd',
+        'en-US'
+        // 'UTC+0'
       );
+
+      console.log(this.userData.birthday);
 
       this.fetchApiData.getAllMovies().subscribe((resp: any) => {
         this.favoriteMovies = resp.filter(

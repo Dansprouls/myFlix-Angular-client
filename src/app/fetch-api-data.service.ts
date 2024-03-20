@@ -87,10 +87,11 @@ export class UserRegistrationService {
   }
 
   getFavoriteMovies(): Observable<any> {
-    const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+
     return this.http
-      .get(apiUrl + 'users/' + username, {
+      .get(apiUrl + 'users/' + user, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -103,10 +104,13 @@ export class UserRegistrationService {
   }
 
   addFavoriteMovie(movieId: string): Observable<any> {
-    const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    user.favoriteMovies.push(movieId);
+    localStorage.setItem('user', JSON.stringify(user));
+
     return this.http
-      .post(apiUrl + 'users/' + username + '/movies/' + movieId, {
+      .post(apiUrl + 'users/' + user.username + '/movies/' + movieId, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -128,8 +132,11 @@ export class UserRegistrationService {
 
   //added to create boolean for button to add/remove movies
   isFavorite(movieId: string): boolean {
-    const username = JSON.parse(localStorage.getItem('username') || '{}');
-    return username.FavoriteMovies.indexOf(movieId) >= 0;
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+    console.log(user);
+
+    return user.favoriteMovies.indexOf(movieId) >= 0;
   }
 
   deleteUser(): Observable<any> {
@@ -145,10 +152,18 @@ export class UserRegistrationService {
   }
 
   deleteFavoriteMovie(movieId: string): Observable<any> {
-    const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+    const index = user.favoriteMovies.indexOf(movieId);
+    if (index > -1) {
+      user.favoriteMovies.splice(index, 1);
+    }
+
+    localStorage.setItem('user', JSON.stringify(user));
+
     return this.http
-      .delete(apiUrl + 'users/' + username + '/movies/' + movieId, {
+      .delete(apiUrl + 'users/' + user.username + '/movies/' + movieId, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
