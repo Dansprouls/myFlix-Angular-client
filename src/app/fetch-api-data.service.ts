@@ -118,6 +118,7 @@ export class UserRegistrationService {
   addFavoriteMovie(movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user') || '{}');
+
     user.favoriteMovies.push(movieId);
     localStorage.setItem('user', JSON.stringify(user));
 
