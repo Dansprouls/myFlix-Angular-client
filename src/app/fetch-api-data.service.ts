@@ -103,21 +103,6 @@ export class UserRegistrationService {
       );
   }
 
-  addFavoriteMovie(movieId: string): Observable<any> {
-    const token = localStorage.getItem('token');
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    user.favoriteMovies.push(movieId);
-    localStorage.setItem('user', JSON.stringify(user));
-
-    return this.http
-      .post(apiUrl + 'users/' + user.username + '/movies/' + movieId, {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
-        }),
-      })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
-  }
-
   editUser(updatedUser: any): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
@@ -130,20 +115,14 @@ export class UserRegistrationService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  //added to create boolean for button to add/remove movies
-  isFavorite(movieId: string): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-
-    console.log(user);
-
-    return user.favoriteMovies.indexOf(movieId) >= 0;
-  }
-
-  deleteUser(): Observable<any> {
-    const userid = localStorage.getItem('userid');
+  addFavoriteMovie(movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    user.favoriteMovies.push(movieId);
+    localStorage.setItem('user', JSON.stringify(user));
+
     return this.http
-      .delete(apiUrl + 'users/' + userid, {
+      .post(apiUrl + 'users/' + user.username + '/movies/' + movieId, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -164,6 +143,25 @@ export class UserRegistrationService {
 
     return this.http
       .delete(apiUrl + 'users/' + user.username + '/movies/' + movieId, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  //added to create boolean for button to add/remove movies
+  isFavorite(movieId: string): boolean {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+    return user.favoriteMovies.indexOf(movieId) >= 0;
+  }
+
+  deleteUser(): Observable<any> {
+    const userid = localStorage.getItem('userid');
+    const token = localStorage.getItem('token');
+    return this.http
+      .delete(apiUrl + 'users/' + userid, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),

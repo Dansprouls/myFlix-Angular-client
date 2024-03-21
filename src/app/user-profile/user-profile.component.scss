@@ -1,0 +1,28 @@
+.user-container {
+  margin: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-info-container {
+  margin: auto;
+  background-color: #ffe81f;
+  color: black;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  width: 25%;
+  flex: 1;
+}
+
+.user-container h1 {
+  text-align: center;
+}
+
+.update-user-section {
+  flex: 1;
+}
+
+.update-user-section {
+  margin: 30px;
+}

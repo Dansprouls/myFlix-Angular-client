@@ -24,7 +24,6 @@ export class MovieCardComponent {
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log(this.movies);
       return this.movies;
     });
   }
@@ -56,20 +55,27 @@ export class MovieCardComponent {
     });
   }
 
-  addFavoriteMovie(_id: string): void {
-    this.fetchApiData.addFavoriteMovie(_id).subscribe((Resp: any) => {
+  /**
+   *
+   * @param {string} id
+   * movies will be added/deleted to the users favorite movie array.
+   * isFavorite is created to check if the movie has been added.
+   */
+
+  addFavoriteMovie(id: string): void {
+    this.fetchApiData.addFavoriteMovie(id).subscribe((Resp: any) => {
       this.snackBar.open('Added to Favorites List!', 'OK', {
         duration: 2000,
       });
     });
   }
 
-  isFavorite(_id: string): boolean {
-    return this.fetchApiData.isFavorite(_id);
+  isFavorite(id: string): boolean {
+    return this.fetchApiData.isFavorite(id);
   }
 
-  deleteFavoriteMovie(_id: string): void {
-    this.fetchApiData.deleteFavoriteMovie(_id).subscribe((Resp: any) => {
+  deleteFavoriteMovie(id: string): void {
+    this.fetchApiData.deleteFavoriteMovie(id).subscribe((Resp: any) => {
       this.snackBar.open('Removed from Favorites List.', 'OK', {
         duration: 2000,
       });
