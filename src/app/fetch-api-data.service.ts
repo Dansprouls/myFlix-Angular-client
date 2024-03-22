@@ -15,7 +15,11 @@ const apiUrl = 'https://star-wars-myflix-1632.herokuapp.com/';
 export class UserRegistrationService {
   constructor(private http: HttpClient) {}
 
-  //API call to user registration endpoint
+  /**
+   *  api call to user registration endpoint
+   * @param userDetails
+   * @returns a user that has been registered in the DB
+   */
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
@@ -23,6 +27,11 @@ export class UserRegistrationService {
       .pipe(catchError(this.handleError));
   }
 
+  /**
+   * direct users to the login page.
+   * @param userDetails
+   * @returns stores token and user data in local storage and logs in the user
+   */
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
@@ -30,6 +39,9 @@ export class UserRegistrationService {
       .pipe(catchError(this.handleError));
   }
 
+  /**
+   * @returns all of the movies
+   */
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -41,6 +53,10 @@ export class UserRegistrationService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  /**
+   * @param title
+   * @returns one movie by title
+   */
   getOneMovies(title: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -52,6 +68,10 @@ export class UserRegistrationService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  /**
+   * @param directorName
+   * @returns name of  Director
+   */
   getDirector(directorName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -63,6 +83,10 @@ export class UserRegistrationService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  /**
+   * @param genreName
+   * @returns name of the genre
+   */
   getGenre(genreName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -74,6 +98,9 @@ export class UserRegistrationService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  /**
+   * @returns returns one user
+   */
   getUser(): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
@@ -86,6 +113,10 @@ export class UserRegistrationService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  /**
+   * list of favorite movies shown on profile page
+   * @returns users favoriteMovies array
+   */
   getFavoriteMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -103,6 +134,10 @@ export class UserRegistrationService {
       );
   }
 
+  /**
+   * @param updatedUser
+   * @returns takes the data the user wants to change and updates it for the user in the database
+   */
   editUser(updatedUser: any): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
@@ -115,6 +150,12 @@ export class UserRegistrationService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  /**
+   *
+   * @param movieID
+   * @param username
+   * @returns favoriteMovie array with newly added movie id
+   */
   addFavoriteMovie(username: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -129,6 +170,11 @@ export class UserRegistrationService {
       .pipe(catchError(this.handleError));
   }
 
+  /**
+   * @param movieID
+   * @param username
+   * @returns favoriteMovies array with movie id removed
+   */
   deleteFavoriteMovie(username: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -179,13 +225,19 @@ export class UserRegistrationService {
   //     .pipe(map(this.extractResponseData), catchError(this.handleError));
   // }
 
-  //added to create boolean for button to add/remove movies
+  /**
+   * @param movieID
+   * @returns a boolean value that will check if the favorite movies array has any movieID
+   */
   isFavorite(movieId: string): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
 
     return user.favoriteMovies.indexOf(movieId) >= 0;
   }
 
+  /**
+   * @returns user account is deleted from the database
+   */
   deleteUser(): Observable<any> {
     const userid = localStorage.getItem('userid');
     const token = localStorage.getItem('token');

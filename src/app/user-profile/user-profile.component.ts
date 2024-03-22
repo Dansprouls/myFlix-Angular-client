@@ -26,6 +26,10 @@ export class UserProfileComponent {
     this.getUser();
   }
 
+  /**
+   *  get user will retrieve all of the user data
+   *
+   */
   getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
@@ -50,6 +54,10 @@ export class UserProfileComponent {
     });
   }
 
+  /**
+   *  edit user allows you to update user's data
+   *
+   */
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe(
       (data) => {
@@ -68,6 +76,10 @@ export class UserProfileComponent {
     );
   }
 
+  /**
+   *  delete user will delete the user account from the database
+   *
+   */
   deleteUser(): void {
     if (confirm('Confirm delete user?')) {
       this.router.navigate(['welcome']).then(() => {

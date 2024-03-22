@@ -31,6 +31,12 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   *
+   * @param name
+   * @param description
+   * param data will be passed into the dialog when opened.
+   */
   getGenre(name: string, description: string): void {
     this.dialog.open(MovieDetailsComponent, {
       data: {
@@ -40,6 +46,12 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   *
+   * @param name
+   * @param description
+   * param data will be passed into the dialog when opened.
+   */
   getDirector(name: string, description: string): void {
     this.dialog.open(MovieDetailsComponent, {
       data: {
@@ -49,6 +61,12 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   *
+   * @param title
+   * @param description
+   * param data will be passed into the dialog when opened.
+   */
   getMovieDetails(title: string, description: string): void {
     this.dialog.open(MovieDetailsComponent, {
       data: {
@@ -64,14 +82,6 @@ export class MovieCardComponent {
    * movies will be added/deleted to the users favorite movie array.
    * isFavorite is created to check if the movie has been added.
    */
-
-  // addFavoriteMovie(id: string): void {
-  //   this.fetchApiData.addFavoriteMovie(id).subscribe((Resp: any) => {
-  //     this.snackBar.open('Added to Favorites List!', 'OK', {
-  //       duration: 2000,
-  //     });
-  //   });
-  // }
 
   handleAddDeleteFavoriteMovie(movieId: string): void {
     if (this.user.favoriteMovies.includes(movieId)) {
@@ -98,26 +108,4 @@ export class MovieCardComponent {
         });
     }
   }
-
-  // addFavoriteMovie(id: string): void {
-  //   const user = JSON.parse(localStorage.getItem("user") || "{}");
-  //   const username = user.username;
-  //   const token = localStorage.getItem("token");
-
-  //   if (username && token) {
-  //     this.fetchApiData.addFavoriteMovie(username, id).sunsc
-  //   }
-  // }
-
-  // isFavorite(id: string): boolean {
-  //   return this.fetchApiData.isFavorite(id);
-  // }
-
-  // deleteFavoriteMovie(id: string): void {
-  //   this.fetchApiData.deleteFavoriteMovie(id).subscribe((Resp: any) => {
-  //     this.snackBar.open('Removed from Favorites List.', 'OK', {
-  //       duration: 2000,
-  //     });
-  //   });
-  // }
 }

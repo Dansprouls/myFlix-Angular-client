@@ -18,6 +18,10 @@ export class UserRegistrationFormComponent implements OnInit {
   ) {}
   ngOnInit(): void {}
 
+  /**
+   *  register user will allow a new user to register for the app and will save the user to the database
+   *
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(
       (response) => {
