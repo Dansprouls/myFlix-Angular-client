@@ -46,7 +46,13 @@
           <mat-icon class="fav-icon">favorite_border</mat-icon>
         </button> -->
 
-        <button
+        <mat-icon (click)="handleAddDeleteFavoriteMovie(movie._id)">{{
+          user.favoriteMovies.includes(movie._id)
+            ? "favorite"
+            : "favorite_border"
+        }}</mat-icon>
+
+        <!-- <button
           *ngIf="!isFavorite(movie._id)"
           mat-icon-button
           (click)="addFavoriteMovie(movie._id)"
@@ -62,7 +68,7 @@
           matTooltip="Remove from favorites"
         >
           <mat-icon>favorite</mat-icon>
-        </button>
+        </button> -->
       </mat-card-actions>
     </mat-card>
   </div>

@@ -2,6 +2,7 @@
 <app-navigation></app-navigation>
 
 <div class="container">
+  <h1 class="header-title">{{ user.username }}'s Profile</h1>
   <div class="user-container">
     <div class="user-info-container">
       <div class="user-info">
@@ -101,26 +102,28 @@
           />
         </mat-form-field>
 
-        <button mat-raised-button color="primary" (click)="editUser()">
-          Update Info
-        </button>
+        <div class="buttons-container">
+          <button mat-raised-button color="primary" (click)="editUser()">
+            Update Info
+          </button>
 
-        <button mat-raised-button color="warn" (click)="deleteUser()">
-          Delete User
-        </button>
+          <button mat-raised-button color="warn" (click)="deleteUser()">
+            Delete User
+          </button>
+        </div>
       </form>
     </div>
   </div>
   <div class="favorite-movies-section">
-    <h2>Your Favorite Movies</h2>
+    <h1>Your Favorite Movies</h1>
     <div *ngIf="favoriteMovies.length === 0">
       <p>Your list is empty!</p>
     </div>
-    <mat-list>
-      <mat-list-item *ngFor="let movie of favoriteMovies">
-        <img matListItemAvatar src="{{ movie.imageURL }}" />
-        <span matListItemTitle>{{ movie.title }}</span>
-      </mat-list-item>
-    </mat-list>
+    <div class="favorite-movies-list">
+      <div class="favorite-card" *ngFor="let movie of favoriteMovies">
+        <img class="movie-image" src="{{ movie.imageURL }}" />
+        <span class="movie-title">{{ movie.title }}</span>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,3 +1,9 @@
+.header-title {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 3rem;
+}
+
 .user-container {
   margin: 30px;
   display: flex;
@@ -15,6 +21,10 @@
   flex: 1;
 }
 
+.user-info > * {
+  font-size: 2rem;
+}
+
 .user-container h1 {
   text-align: center;
 }
@@ -25,4 +35,94 @@
 
 .update-user-section {
   margin: 30px;
+}
+
+.favorite-movies-section {
+  padding: 20px;
+}
+
+.favorite-movies-section h1 {
+  text-align: center;
+}
+
+.favorite-movies-section p {
+  text-align: center;
+}
+
+.favorite-movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.favorite-card {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.movie-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.movie-title {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: auto;
+}
+
+.mat-form-field {
+  margin-bottom: 20px; /* Add space between each form field */
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.buttons-container > button {
+  width: 45%;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    margin: auto;
+  }
+
+  .user-info-container,
+  .update-user-section,
+  .favorite-movies-section {
+    width: 100%; /* Full width on mobile */
+  }
+
+  .user-info-container,
+  .update-user-section {
+    margin: 0; /* Remove margin on mobile */
+  }
+
+  .favorite-card {
+    width: 100%; /* Show one card per row on mobile */
+    margin: auto;
+  }
+
+  .user-info > p {
+    font-size: 1rem;
+  }
 }
