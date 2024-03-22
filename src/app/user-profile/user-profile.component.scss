@@ -47,6 +47,7 @@
 
 .favorite-movies-section p {
   text-align: center;
+  margin: auto;
 }
 
 .favorite-movies-list {
@@ -101,9 +102,21 @@ form {
   width: 45%;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
   .container {
     margin: auto;
+  }
+
+  .user-container {
+    display: block;
+  }
+
+  .user-info-container {
+    margin: auto;
+  }
+
+  .favorite-movies-section {
+    margin-right: 40px;
   }
 
   .user-info-container,
